@@ -1,8 +1,8 @@
 package com.skilldistillery.blackjack.entities;
 
-public class BlackJackDealerRules {
+public class BlackJackRules {
 
-	public BlackJackDealerRules() {
+	public BlackJackRules() {
 		// TODO Auto-generated constructor stub
 	}
 
