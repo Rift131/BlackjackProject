@@ -1,5 +1,6 @@
 package com.skilldistillery.blackjack.app;
 
+
 public class BlackJackApp {
 
 	public static void main(String[] args) {
@@ -11,5 +12,4 @@ public class BlackJackApp {
 	public void run() {
 
 	}
-// quit method
 }
