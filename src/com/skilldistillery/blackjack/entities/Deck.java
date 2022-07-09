@@ -6,37 +6,35 @@ import java.util.List;
 
 public class Deck {
 
-	private List<Deck> deck = new ArrayList<>();
-	
+	private List<Card> deck;
+
 	public Deck() {
-		deckBuilder();
+		deck = deckBuilder();
 	}
-	
-	public List<Deck> deckBuilder() {
+
+	public List<Card> deckBuilder() {
 		// initialize deck with all 52 cards
+		deck = new ArrayList<>();
 		for (Suit cardSuit : Suit.values()) {
-		for (Rank cardValue : Rank.values()) {
-			Card card = new Card(cardSuit, cardValue);
-		deck.add(card);	
-		}	
+			for (Rank cardValue : Rank.values()) {
+				deck.add(new Card(cardSuit, cardValue));
+			}
 		}
 		return deck;
 	}
-	
-	public int checkDeckSize(Deck deck) {
+
+	public int checkDeckSize() {
 		// count how many cards are in the deck and return that amount
 		return deck.size();
 	}
-	
+
 	public Card dealCard() {
 		// remove a card from the list
-		Card card = deck.remove(0);
-		return card;
+		return deck.remove(0);
 	}
-	
+
 	public void shuffle() {
 		// shuffle the deck
 		Collections.shuffle(deck);
 	}
 }
-

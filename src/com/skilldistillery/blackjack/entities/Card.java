@@ -1,10 +1,8 @@
 package com.skilldistillery.blackjack.entities;
 
 import java.util.Objects;
-import com.skilldistillery.enums.labs.Rank;
-import com.skilldistillery.enums.labs.Suit;
 
-public class Card extends Deck {
+public class Card {
 	private Suit cardSuit;
 	private Rank cardRank;
 
@@ -40,6 +38,8 @@ public class Card extends Deck {
 	public int hashCode() {
 		return Objects.hash(cardRank, cardSuit);
 	}
+
+
 
 	@Override
 	public boolean equals(Object obj) {
