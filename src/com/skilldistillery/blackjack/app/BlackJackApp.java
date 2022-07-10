@@ -25,11 +25,9 @@ public class BlackJackApp {
 	}
 
 	public void run() {
-		System.out.println("Welcome to Sopwith Blackjack!\nWould you like to play?");
-		System.out.println("Cards remaining in deck: " + deck.checkDeckSize());
 		System.out.println("********************************");
-		System.out.println("*                 _____|_____  *");
-		System.out.println("*                  __I_@_I__   *");
+		System.out.println("*  Sopwith        _____|_____  *");
+		System.out.println("*    Blackjack     __I_@_I__   *");
 		System.out.println("*                     d b      *");
 		System.out.println("* 1. Enter 1 to play           *");
 		System.out.println("* 2. Enter 2 to quit           *");
@@ -94,11 +92,11 @@ public class BlackJackApp {
 					+ player.getHand().getHandValue() + ". You've BUSTED 21 points. You lose.");
 			handsReset();
 		} else {
-			System.out.println("The dealer has " + dealer.getHand().getCards().get(1).toString() + " showing.\nYou have "
-					+ player.getHand().toString() + "." + "\nTotal points: " + player.getHand().getHandValue());
+			System.out.println("The dealer has a " + dealer.getHand().getCards().get(1) + " showing.\n\nYou have... "
+					+ player.getHand().toString() + "\nTotal points: " + player.getHand().getHandValue());
 		}
 // Ask player if they would like to be dealt another card or hold
-		System.out.println("Would you like to Hit or Stay?");
+		System.out.println("\nWould you like to Hit or Stay?");
 		playersChoice();
 	}
 
@@ -183,7 +181,6 @@ public class BlackJackApp {
 		} else if (player.getHand().getHandValue() > dealer.getHand().getHandValue()) {
 			System.out.println("Your score: " + player.getHand().getHandValue());
 			System.out.println("The dealers score: " + dealer.getHand().getHandValue());
-			System.out.println("You WIN!");
 			playerVictoryGraphic();
 			handsReset();
 		} else if (player.getHand().getHandValue() < dealer.getHand().getHandValue()) {
@@ -223,19 +220,19 @@ public class BlackJackApp {
 	public void playerVictoryGraphic() {
 		System.out.println("\n"
 				+ "\n"
-				+ " \\ ---------------------------\\           _         ______ |\n"
+				+ " \\----------------------------\\            _         ______ |\n"
 				+ "  \\                            \\        /   \\___-=O`/|O`/__|\n"
-				+ "   \\    (YOU WIN!!!!)           \\_______\\          / | /    )\n"
-				+ "   /                             /        `/-==__ _/__|/__=-|  -GM\n"
-				+ "  /                             /         *             \\ | |\n"
-				+ " /_____________________________/                        (o)\n"
+				+ "   \\     YOU WIN!!!!            \\_______\\          / | /    )\n"
+				+ "   /                             /          `/-==__ _/__|/__=-|\n"
+				+ "  /                             /         *              \\ | |\n"
+				+ " /_____________________________/                          (o)\n"
 				+ "\n"
 				+ "------------------------------------------------------------------\n");
 				
 	}
 	
 	public void playerLossGraphic() {
-		System.out.println("        _ ._  _ , _ ._\n"
+		System.out.println("          _ ._  _ , _ ._\n"
 				+ "        (_ ' ( `  )_  .__)\n"
 				+ "      ( (  (    )   `)  ) _)\n"
 				+ "     (__ (_   (_ . _) _) ,__)\n"

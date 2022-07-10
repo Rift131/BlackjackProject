@@ -29,7 +29,9 @@ public abstract class Hand {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append(hand);
+		for (Card card : hand) {
+		builder.append("\n\t").append(card);
+		}
 		return builder.toString();
 	}
 
