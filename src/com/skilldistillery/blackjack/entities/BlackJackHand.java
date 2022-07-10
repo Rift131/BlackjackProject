@@ -3,7 +3,7 @@ package com.skilldistillery.blackjack.entities;
 public class BlackJackHand extends Hand {
 
 	public BlackJackHand() {
-		// TODO Auto-generated constructor stub
+
 	}
 
 	public int getHandValue() {
@@ -12,9 +12,13 @@ public class BlackJackHand extends Hand {
 		for (Card card : getCards()) {
 			handValue += card.getValue();
 		}
-
+		for (Card card : getCards()) {
+			if (card.getValue() == 11 && handValue > 21) {
+					handValue -= 10;
+				}
+			}
 		return handValue;
-	}
+		}
 
 	public boolean isBlackjack() {
 		if (getHandValue() == 21 && getCards().size() == 2) {
@@ -29,13 +33,17 @@ public class BlackJackHand extends Hand {
 		}
 		return false;
 	}
+
 	public boolean isLessThan17() {
 		if (getHandValue() < 17) {
 			return true;
 		}
 		return false;
 	}
-	
-	
+
+	public int aceCheck() {
+
+		return getHandValue();
+	}
 
 }

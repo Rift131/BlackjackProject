@@ -3,7 +3,6 @@ package com.skilldistillery.blackjack.app;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-import com.skilldistillery.blackjack.entities.BlackJackHand;
 import com.skilldistillery.blackjack.entities.Dealer;
 import com.skilldistillery.blackjack.entities.Deck;
 import com.skilldistillery.blackjack.entities.Player;
@@ -13,12 +12,11 @@ public class BlackJackApp {
 	private Scanner userInput = new Scanner(System.in);
 	private Dealer dealer = new Dealer();
 	private Player player = new Player();
-	private BlackJackHand rules = new BlackJackHand();
 	private Deck deck = new Deck();
 	
 	
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 		BlackJackApp app = new BlackJackApp();
 		app.deck.deckBuilder();
 		app.run();
@@ -89,7 +87,7 @@ public class BlackJackApp {
 		} else if (player.getHand().isBust()) {
 			playerLossGraphic();
 			System.out.println("You have " + player.getHand().toString() + "." + "\nTotal points: "
-					+ player.getHand().getHandValue() + ". You've BUSTED 21 points. You lose.");
+					+ player.getHand().getHandValue() + ". You've BUSTED 21 points. You lost this dogfight.");
 			handsReset();
 		} else {
 			System.out.println("The dealer has a " + dealer.getHand().getCards().get(1) + " showing.\n\nYou have... "
@@ -150,7 +148,7 @@ public class BlackJackApp {
 	public void stand() {
 		// if hold, reveal dealers first card and add cards until logic of 17 or more is
 		// met
-		System.out.println("The dealer reveals their card. They now have " + dealer.getHand().getCards() + " in play.");
+		System.out.println("The dealer reveals their card. They now have " + dealer.getHand().toString() + " in play.");
 		// logic for dealer black jack
 
 		while (dealer.getHand().isLessThan17()) {
@@ -187,7 +185,7 @@ public class BlackJackApp {
 			System.out.println("Your score: " + player.getHand().getHandValue());
 			System.out.println("The dealers score: " + dealer.getHand().getHandValue());
 			playerLossGraphic();
-			System.out.println("You lose!");
+			System.out.println("You've been shot down!");
 			handsReset();
 		} else if (player.getHand().getHandValue() == dealer.getHand().getHandValue()) {
 			System.out.println("Your score: " + player.getHand().getHandValue());
@@ -210,13 +208,15 @@ public class BlackJackApp {
 	}
 	
 	public void newDeck() {
-		System.out.println("*************************************************");
+		System.out.println("\n*************************************************");
 		System.out.println("The deck has less than half the cards remaining.\n\t\tTime for a new deck!");
-		System.out.println("*************************************************");
+		System.out.println("*************************************************\n");
 		deck.removeDeck();
 		deck.deckBuilder();
-		run();
+		handsReset();
 	}
+	
+	
 	public void playerVictoryGraphic() {
 		System.out.println("\n"
 				+ "\n"

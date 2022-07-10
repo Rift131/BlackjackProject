@@ -1,9 +1,5 @@
 package com.skilldistillery.blackjack.entities;
 
-import java.util.*;
-
-
-
 public class Player {
 protected BlackJackHand hand = new BlackJackHand();
 protected int playerScore;

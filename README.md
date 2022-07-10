@@ -12,3 +12,5 @@ Organization is key in Object Oriented Programming (OOP). The chief challenge in
 
 Organizational structure naming conventions are also critical in keeping everything oriented correctly when writing code logically.
 
+Enumeration is a wonderful thing. The enum class is priceless in creating a standard collection of "things" to be used over and over again in different applications.
+

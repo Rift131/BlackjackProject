@@ -5,7 +5,6 @@ import java.util.List;
 
 public abstract class Hand {
 
-	private Deck deck = new Deck();
 	List<Card> hand;
 
 	// add cards
@@ -23,7 +22,7 @@ public abstract class Hand {
 		hand.removeAll(hand);
 	}
 
-	// abstract due to different player hands being dealt with
+	// abstract due to different player hands being calculated
 	public abstract int getHandValue();
 
 	@Override
