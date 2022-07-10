@@ -4,43 +4,45 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Hand {
-	// remove cards
-	private List<Card> cards;
+
+	private Deck deck = new Deck();
+	List<Card> hand;
+
 	// add cards
-	public Hand () {
+	public Hand() {
 		super();
-		cards = new ArrayList<>();
+		hand = new ArrayList<>();
 	}
+
 	// display the hand (toString)
 	public void addCard(Card card) {
-		cards.add(card);
+		hand.add(card);
 	}
-	
+
 	public void clear() {
-		cards.removeAll(cards);
+		hand.removeAll(hand);
 	}
+
 	// abstract due to different player hands being dealt with
 	public abstract int getHandValue();
-	
+
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("Hand [cards=").append(cards).append("]");
+		builder.append(hand);
 		return builder.toString();
 	}
-	
+
 	public List<Card> getCards() {
-		return cards;
+		return hand;
 	}
-	public int getLastCard() {
-		return cards.size()-1;
+
+	public Card getLastCard() {
+		return hand.get(hand.size() - 1);
 	}
-	
-	
-	
+
 	public void setCards(List<Card> cards) {
-		this.cards = cards;
+		this.hand = cards;
 	}
-	
-	
+
 }

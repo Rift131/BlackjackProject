@@ -5,6 +5,7 @@ import java.util.Objects;
 public class Card {
 	private Suit cardSuit;
 	private Rank cardRank;
+	
 
 	public Card(Suit cardSuit, Rank cardValue) {
 		// TODO Auto-generated constructor stub
