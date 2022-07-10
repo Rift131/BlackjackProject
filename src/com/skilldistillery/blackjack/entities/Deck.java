@@ -23,18 +23,21 @@ public class Deck {
 		return deck;
 	}
 
-	public int checkDeckSize() {
-		// count how many cards are in the deck and return that amount
-		return deck.size();
-	}
 
 	public Card dealCard() {
 		// remove a card from the list
 		return deck.remove(0);
 	}
+	public void dealCard(Hand hand) {
+		
+	}
 
 	public void shuffle() {
 		// shuffle the deck
 		Collections.shuffle(deck);
+	}
+	public int checkDeckSize() {
+		// count how many cards are in the deck and return that amount
+		return deck.size();
 	}
 }
