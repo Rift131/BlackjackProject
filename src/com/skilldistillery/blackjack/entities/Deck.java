@@ -41,6 +41,10 @@ public class Deck {
 		// count how many cards are in the deck and return that amount
 		return getCards().size();
 	}
+	
+	public void removeDeck() {
+		cards.removeAll(cards);
+	}
 
 	public List<Card> getCards() {
 		return cards;
