@@ -148,19 +148,6 @@ public class BlackJackApp {
 	public void stand() {
 		// if hold, reveal dealers first card and add cards until logic of 17 or more is
 		// met
-		System.out.println("The dealer reveals their card. They now have " + dealer.getHand().toString() + " in play.");
-		// logic for dealer black jack
-
-		while (dealer.getHand().isLessThan17()) {
-			this.deck.dealCard(dealer.getHand());
-
-			System.out.println("The dealer draws a " + dealer.getHand().getLastCard() + ". The dealer score is now " + dealer.getHand().getHandValue() + ".");
-		}
-		winnerDeclaration();
-	}
-
-	public void winnerDeclaration() {
-		// evaluate the winner and sysout
 		if (dealer.getHand().isBlackjack()) {
 			System.out.println("BLACKJACK!! The dealer wins!");
 			System.out.println("    ____        _");
@@ -171,7 +158,22 @@ public class BlackJackApp {
 			// invoke a method that resets the hands and asks if the player wants to play
 			// again
 			handsReset();
-		} else if (dealer.getHand().isBust()) {
+		}
+		System.out.println("The dealer reveals their card. They now have " + dealer.getHand().toString() + " in play.");
+		// logic for dealer black jack
+
+		while (dealer.getHand().getDealerHandValue() < 17) {
+			this.deck.dealCard(dealer.getHand());
+
+			System.out.println("The dealer draws a " + dealer.getHand().getLastCard() + ".\n\tDealer score: " + dealer.getHand().getHandValue());
+		}
+		winnerDeclaration();
+	}
+
+	public void winnerDeclaration() {
+		// evaluate the winner and sysout
+		
+		if (dealer.getHand().isBust()) {
 			System.out.println("The dealer has " + dealer.getHand().toString() + " in their hand." + "\nTotal points: "
 					+ dealer.getHand().getHandValue() + ". The dealer BUSTED 21 points. You win!");
 			playerVictoryGraphic();
@@ -190,7 +192,7 @@ public class BlackJackApp {
 		} else if (player.getHand().getHandValue() == dealer.getHand().getHandValue()) {
 			System.out.println("Your score: " + player.getHand().getHandValue());
 			System.out.println("The dealers score: " + dealer.getHand().getHandValue());
-			System.out.println("A tie! Nothing lost, nothing gained.");
+			System.out.println("\nA tie! Nothing lost, nothing gained.");
 			handsReset();
 		}
 

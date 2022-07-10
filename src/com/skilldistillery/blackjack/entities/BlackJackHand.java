@@ -19,6 +19,21 @@ public class BlackJackHand extends Hand {
 			}
 		return handValue;
 		}
+	
+	public int getDealerHandValue() {
+		int handValue = 0;
+
+		for (Card card : getCards()) {
+			handValue += card.getValue();
+		}
+		for (Card card : getCards()) {
+			if (card.getValue() == 11 && handValue >= 17) {
+					handValue -= 10;
+				}
+			}
+		return handValue;
+		}
+	
 
 	public boolean isBlackjack() {
 		if (getHandValue() == 21 && getCards().size() == 2) {

@@ -1,6 +1,5 @@
 package com.skilldistillery.blackjack.entities;
 
-import java.util.*;
 
 public class Dealer extends Player {
 // dealer does all of the talking
@@ -8,9 +7,7 @@ public class Dealer extends Player {
 
 	public Dealer() {
 
-	}
-	
-	
+	}	
 	
 	@Override
 	public void displayHand() {
