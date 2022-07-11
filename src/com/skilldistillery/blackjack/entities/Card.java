@@ -8,7 +8,6 @@ public class Card {
 	
 
 	public Card(Suit cardSuit, Rank cardValue) {
-		// TODO Auto-generated constructor stub
 		this.cardSuit = cardSuit;
 		this.cardRank = cardValue;
 	}

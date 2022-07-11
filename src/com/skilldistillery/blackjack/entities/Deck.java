@@ -13,7 +13,6 @@ public class Deck {
 	}
 
 	public void deckBuilder() {
-		// initialize deck with all 52 cards
 		for (Suit cardSuit : Suit.values()) {
 			for (Rank cardValue : Rank.values()) {
 				cards.add(new Card(cardSuit, cardValue));
@@ -23,13 +22,11 @@ public class Deck {
 	}
 
 	public List<Card> shuffle(List<Card> newDeck) {
-		// shuffle the deck
 		Collections.shuffle(newDeck);
 		return newDeck;
 	}
 
 	public Card dealCard() {
-		// remove a card from the list
 		return cards.remove(0);
 	}
 	
@@ -38,7 +35,6 @@ public class Deck {
 	}
 
 	public int checkDeckSize() {
-		// count how many cards are in the deck and return that amount
 		return getCards().size();
 	}
 	

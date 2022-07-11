@@ -7,13 +7,11 @@ public abstract class Hand {
 
 	List<Card> hand;
 
-	// add cards
 	public Hand() {
 		super();
 		hand = new ArrayList<>();
 	}
 
-	// display the hand (toString)
 	public void addCard(Card card) {
 		hand.add(card);
 	}

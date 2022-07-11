@@ -13,10 +13,9 @@ public class BlackJackApp {
 	private Dealer dealer = new Dealer();
 	private Player player = new Player();
 	private Deck deck = new Deck();
-	
-	
+
 	public static void main(String[] args) {
-		
+
 		BlackJackApp app = new BlackJackApp();
 		app.deck.deckBuilder();
 		app.run();
@@ -63,7 +62,6 @@ public class BlackJackApp {
 		}
 	}
 
-
 	public void dealInitialHand() {
 		for (int i = 0; i < 2; i++) {
 			this.deck.dealCard(player.getHand());
@@ -73,13 +71,12 @@ public class BlackJackApp {
 	}
 
 	public void playersTurn() {
-// sysout current score of player and current status of dealer
-		// access the dealers second card
 		if (player.getHand().isBlackjack() && !dealer.getHand().isBlackjack()) {
 			System.out.println("BLACKJACK!!");
 			playerVictoryGraphic();
-			// invoke a method that resets the hands and asks if the player wants to play
-			// again
+			System.out.println("\n\tDealer score: " + dealer.getHand().getHandValue());
+			System.out.println(
+					"You have: " + player.getHand().toString() + "\n\tYour score: " + player.getHand().getHandValue());
 			handsReset();
 		} else if (player.getHand().isBlackjack() && dealer.getHand().isBlackjack()) {
 			System.out.println("Tie Blackjacks! Nothing lost, nothing gained.");
@@ -146,33 +143,33 @@ public class BlackJackApp {
 	}
 
 	public void stand() {
-		// if hold, reveal dealers first card and add cards until logic of 17 or more is
-		// met
+
 		if (dealer.getHand().isBlackjack()) {
 			System.out.println("BLACKJACK!! The dealer wins!");
 			System.out.println("    ____        _");
 			System.out.println(" |__\\_\\_o,___/ \\   @@@    @@   @@@@");
 			System.out.println("([___\\_\\______--\\'    @@@@  @@@");
-			System.out.println(" |  o'");
-					
-			// invoke a method that resets the hands and asks if the player wants to play
-			// again
+			System.out.println(" |   o'");
+			System.out.println("___________________________________________");
+			System.out.println("\n\tDealer score: " + dealer.getHand().getHandValue());
+			System.out.println(
+					"You have: " + player.getHand().toString() + "\n\tYour score: " + player.getHand().getHandValue());
+
 			handsReset();
 		}
 		System.out.println("The dealer reveals their card. They now have " + dealer.getHand().toString() + " in play.");
-		// logic for dealer black jack
 
 		while (dealer.getHand().getDealerHandValue() < 17) {
 			this.deck.dealCard(dealer.getHand());
 
-			System.out.println("The dealer draws a " + dealer.getHand().getLastCard() + ".\n\tDealer score: " + dealer.getHand().getHandValue());
+			System.out.println("The dealer draws a " + dealer.getHand().getLastCard() + ".\n\tDealer score: "
+					+ dealer.getHand().getHandValue());
 		}
 		winnerDeclaration();
 	}
 
 	public void winnerDeclaration() {
-		// evaluate the winner and sysout
-		
+
 		if (dealer.getHand().isBust()) {
 			System.out.println("The dealer has " + dealer.getHand().toString() + " in their hand." + "\nTotal points: "
 					+ dealer.getHand().getHandValue() + ". The dealer BUSTED 21 points. You win!");
@@ -199,7 +196,7 @@ public class BlackJackApp {
 	}
 
 	public void handsReset() {
-		// clear hands and present menu to use
+
 		if (deck.checkDeckSize() < 26) {
 			newDeck();
 		}
@@ -208,7 +205,7 @@ public class BlackJackApp {
 		run();
 
 	}
-	
+
 	public void newDeck() {
 		System.out.println("\n*************************************************");
 		System.out.println("The deck has less than half the cards remaining.\n\t\tTime for a new deck!");
@@ -217,31 +214,22 @@ public class BlackJackApp {
 		deck.deckBuilder();
 		handsReset();
 	}
-	
-	
+
 	public void playerVictoryGraphic() {
-		System.out.println("\n"
-				+ "\n"
-				+ " \\----------------------------\\            _         ______ |\n"
-				+ "  \\                            \\        /   \\___-=O`/|O`/__|\n"
-				+ "   \\     YOU WIN!!!!            \\_______\\          / | /    )\n"
-				+ "   /                             /          `/-==__ _/__|/__=-|\n"
-				+ "  /                             /         *              \\ | |\n"
-				+ " /_____________________________/                          (o)\n"
-				+ "\n"
+		System.out.println("\n" + "\n" + " \\---------------------------\\          _         ______ |\n"
+				+ "  \\                           \\        / \\___-=O`/|O`/___|\n"
+				+ "   \\     YOU WIN!!!!           \\_______\\        / | /    |)\n"
+				+ "   /                           /       `/-==-__/__|/__=--|\n"
+				+ "  /                           /         *           \\ |  |\n"
+				+ " /___________________________/                      (o)\n" + "\n"
 				+ "------------------------------------------------------------------\n");
-				
+
 	}
-	
+
 	public void playerLossGraphic() {
-		System.out.println("          _ ._  _ , _ ._\n"
-				+ "        (_ ' ( `  )_  .__)\n"
-				+ "      ( (  (    )   `)  ) _)\n"
-				+ "     (__ (_   (_ . _) _) ,__)\n"
-				+ "         `~~`\\ ' . /`~~`\n"
-				+ "              ;   ;\n"
-				+ "              /   \\\n"
-				+ "_____________/_ __ \\_____________");
+		System.out.println("          _ ._  _ , _ ._\n" + "        (_ ' ( `  )_  .__)\n"
+				+ "      ( (  (    )   `)  ) _)\n" + "     (__ (_   (_ . _) _) ,__)\n" + "         `~~`\\ ' . /`~~`\n"
+				+ "              ;   ;\n" + "              /   \\\n" + "_____________/_ __ \\_____________");
 	}
 
 	public void quit() {
